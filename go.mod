@@ -1,9 +1,9 @@
-module biu-x.org/TikTok
+module github.com/Biu-X/TikTok
 
 go 1.20
 
 require (
-	github.com/Tohrusky/sensitive-go v1.0.0
+	github.com/Tohrusky/sensitive-go v1.0.3
 	github.com/charmbracelet/log v0.2.3
 	github.com/disintegration/imaging v1.6.2
 	github.com/eleven26/goss/v3 v3.0.0

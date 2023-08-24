@@ -1,9 +1,9 @@
 package sensitiveguard
 
 import (
-	"biu-x.org/TikTok/module/log"
-	"biu-x.org/TikTok/module/response"
-	"biu-x.org/TikTok/module/sensitive"
+	"github.com/Biu-X/TikTok/module/log"
+	"github.com/Biu-X/TikTok/module/response"
+	"github.com/Biu-X/TikTok/module/sensitive"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -23,7 +23,8 @@ func SensitiveGuard(queryKey string) gin.HandlerFunc {
 		log.Logger.Info(text)
 		// 和谐普通敏感词，替换成*
 		t := sensitive.Replace(text)
-		c.Set("insensitive_text", t)
+		insensitiveTextKey := "insensitive_text_" + queryKey
+		c.Set(insensitiveTextKey, t)
 		// 放行
 		c.Next()
 	}

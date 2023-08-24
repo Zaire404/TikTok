@@ -6,13 +6,12 @@ import (
 	"strconv"
 	"strings"
 
-	"biu-x.org/TikTok/dal/model"
-	"biu-x.org/TikTok/dao"
-	"biu-x.org/TikTok/module/config"
-	"biu-x.org/TikTok/module/ffmpeg"
-	"biu-x.org/TikTok/module/log"
-	"biu-x.org/TikTok/module/oss"
-	"biu-x.org/TikTok/module/response"
+	"github.com/Biu-X/TikTok/dal/model"
+	"github.com/Biu-X/TikTok/dao"
+	"github.com/Biu-X/TikTok/module/ffmpeg"
+	"github.com/Biu-X/TikTok/module/log"
+	"github.com/Biu-X/TikTok/module/oss"
+	"github.com/Biu-X/TikTok/module/response"
 	"github.com/gin-gonic/gin"
 	"time"
 )
@@ -97,8 +96,8 @@ func Action(c *gin.Context) {
 
 	err = dao.CreateVideo(&model.Video{
 		AuthorID: int64(aid),
-		PlayURL:  fmt.Sprintf("%v%v", config.OSS_PREFIX, fileName),
-		CoverURL: fmt.Sprintf("%v%v", config.OSS_PREFIX, cover),
+		PlayURL:  fmt.Sprintf("%v", fileName),
+		CoverURL: fmt.Sprintf("%v", cover),
 		Title:    c.PostForm("title"),
 	})
 	if err != nil {
